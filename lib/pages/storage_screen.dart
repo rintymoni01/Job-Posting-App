@@ -67,3 +67,5 @@ class StorageScreen extends StatelessWidget {
 // style: optimized text styles iteration 22
 
 // chore: optimized margins iteration 26
+
+// refactor: optimized text styles iteration 30
