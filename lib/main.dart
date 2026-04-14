@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'pages/home_screen.dart';
+import 'pages/storage_screen.dart';
+import 'pages/benefits_screen.dart';
 
 void main() => runApp(const SoftwareCompany());
 
@@ -15,16 +18,27 @@ class SoftwareCompany extends StatelessWidget {
   }
 }
 
-class SoftwareCompanyPage extends StatelessWidget {
+class SoftwareCompanyPage extends StatefulWidget {
   const SoftwareCompanyPage({super.key});
+
+  @override
+  State<SoftwareCompanyPage> createState() => _SoftwareCompanyPageState();
+}
+
+class _SoftwareCompanyPageState extends State<SoftwareCompanyPage> {
+  int _currentIndex = 0;
+
+  final List<Widget> _screens = [
+    const HomeScreen(),
+    const StorageScreen(),
+    const BenefitsScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,
-
-
       drawer: Drawer(
         backgroundColor: const Color(0xFF1C1C1C),
         child: ListView(
@@ -71,8 +85,6 @@ class SoftwareCompanyPage extends StatelessWidget {
               title: const Text("Terms of Service"),
               onTap: () {},
             ),
-
-
             const Divider(),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
@@ -90,20 +102,15 @@ class SoftwareCompanyPage extends StatelessWidget {
           ],
         ),
       ),
-
-
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-
-
         leading: Builder(
           builder: (context) => IconButton(
             icon: const Icon(Icons.menu),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
-
         centerTitle: true,
         title: const Text(
           "SHABKh Software Pro",
@@ -118,260 +125,37 @@ class SoftwareCompanyPage extends StatelessWidget {
           ),
         ],
       ),
-
-
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [Color(0xFF0F2027), Color(0xFF203A43), Color(0xFF2C5364)],
+        ),
+        ),
+        child: SafeArea(
+          child: IndexedStack(
+            index: _currentIndex,
+            children: _screens,
           ),
         ),
-        child: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 16),
-            const Text(
-              "Storage and more with\nSoftware",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              "Back up your phone, manage account storage, and learn\nabout member benefits",
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey, fontSize: 14),
-            ),
-            const SizedBox(height: 30),
-
-            // Storage box
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [Color(0xFF232526), Color(0xFF414345)],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
-                    blurRadius: 10,
-                    offset: const Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Storage",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    "53",
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 8),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: const LinearProgressIndicator(
-                      value: 0.53,
-                      minHeight: 10,
-                      backgroundColor: Colors.black38,
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.greenAccent),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    "7.96 GB of 15 GB",
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            // Two cards row
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [Color(0xFF1E1E1E), Color(0xFF2C2C2C)],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.4),
-                          blurRadius: 8,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      children: const [
-                        Icon(
-                          Icons.cloud_upload_outlined,
-                          size: 40,
-                          color: Colors.blueAccent,
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Backup",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          "Set up",
-                          style: TextStyle(
-                            color: Colors.blueAccent,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [Color(0xFF1E1E1E), Color(0xFF2C2C2C)],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.4),
-                          blurRadius: 8,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      children: const [
-                        Icon(
-                          Icons.cleaning_services_outlined,
-                          size: 40,
-                          color: Colors.blueAccent,
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Clean up",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          "5 GB+ to clean up",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.blueAccent),
-                        ),
-                        SizedBox(height: 5),
-                        Text(
-                          "View",
-                          style: TextStyle(
-                            color: Colors.blueAccent,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 30),
-
-            // Membership section
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [Color(0xFF232526), Color(0xFF414345)],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
-                    blurRadius: 10,
-                    offset: const Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Get more out of SHABKh Software Company",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    "With a SHABKh Software Company membership, get exclusive features and extras that make your SHABKh experience even better.",
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  const SizedBox(height: 20),
-                    ElevatedButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(Icons.workspace_premium_outlined),
-                      label: const Text("Upgrade to Premium"),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent,
-                        foregroundColor: Colors.white,
-                        minimumSize: const Size(double.infinity, 50),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                    ),
-                ],
-              ),
-            ),
-          ],
-        ),
       ),
-      ),
-
-      // ✅ Bottom Navigation //
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.black,
         selectedItemColor: Colors.blueAccent,
         unselectedItemColor: Colors.grey,
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.cloud_upload),
-            label: "Storage",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.star_border),
-            label: "Benefits",
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.cloud_upload), label: "Storage"),
+          BottomNavigationBarItem(icon: Icon(Icons.star_border), label: "Benefits"),
         ],
       ),
     );
