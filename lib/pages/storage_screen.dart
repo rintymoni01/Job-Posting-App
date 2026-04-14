@@ -17,6 +17,7 @@ class StorageScreen extends StatelessWidget {
         _buildFileItem(Icons.picture_as_pdf, "project_requirements.pdf", "1.2 MB • Last week", Colors.redAccent),
         _buildFileItem(Icons.video_file, "flutter_tutorial.mp4", "150 MB • 2 weeks ago", Colors.orange),
         _buildFileItem(Icons.insert_drive_file, "resume_final.docx", "800 KB • 1 month ago", Colors.green),
+        _buildFileItem(Icons.folder, "Projects_2026", "1.2 GB • 2 months ago", Colors.teal),
         _buildFileItem(Icons.audio_file, "voice_note.m4a", "3 MB • 1 month ago", Colors.purple),
         const SizedBox(height: 20),
         const Center(
