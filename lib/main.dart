@@ -21,7 +21,8 @@ class SoftwareCompanyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF121212),
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.transparent,
 
 
       drawer: Drawer(
@@ -119,7 +120,15 @@ class SoftwareCompanyPage extends StatelessWidget {
       ),
 
 
-      body: SingleChildScrollView(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color(0xFF0F2027), Color(0xFF203A43), Color(0xFF2C5364)],
+          ),
+        ),
+        child: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -300,8 +309,19 @@ class SoftwareCompanyPage extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(16),
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF232526), Color(0xFF414345)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    blurRadius: 10,
+                    offset: const Offset(0, 5),
+                  ),
+                ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -334,6 +354,7 @@ class SoftwareCompanyPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
       ),
 
       // ✅ Bottom Navigation //
