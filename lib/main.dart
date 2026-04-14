@@ -105,8 +105,8 @@ class SoftwareCompanyPage extends StatelessWidget {
 
         centerTitle: true,
         title: const Text(
-          "SHABKh Software Company",
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          "SHABKh Software Pro",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blueAccent),
         ),
         actions: const [
           Padding(
@@ -283,18 +283,19 @@ class SoftwareCompanyPage extends StatelessWidget {
                     style: TextStyle(color: Colors.grey),
                   ),
                   const SizedBox(height: 20),
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.cloud_circle_outlined),
-                    label: const Text("Upgrade"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blueAccent,
-                      minimumSize: const Size(double.infinity, 50),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                    ElevatedButton.icon(
+                      onPressed: () {},
+                      icon: const Icon(Icons.workspace_premium_outlined),
+                      label: const Text("Upgrade to Premium"),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent,
+                        foregroundColor: Colors.white,
+                        minimumSize: const Size(double.infinity, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
