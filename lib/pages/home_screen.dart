@@ -107,6 +107,7 @@ class HomeScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      
                       SizedBox(height: 8),
                       Text(
                         "Set up",
